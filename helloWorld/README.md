@@ -1,4 +1,4 @@
-# Angular TW Course
+# Angular TW Course Pertemuan 1
 
 This course is taught by `Tony Wijaya, S. Kom., M. Kom., ADA`
 
