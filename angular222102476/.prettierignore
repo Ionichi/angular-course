@@ -1,0 +1,9 @@
+dist/
+build/
+.vscode/
+.angular/
+*.json
+*.md
+.gitignore
+.editorconfig
+public/
