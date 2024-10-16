@@ -6,4 +6,4 @@ build/
 *.md
 .gitignore
 .editorconfig
-*.html
+public/
