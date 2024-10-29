@@ -12,8 +12,6 @@ export class LoginComponent {
 	constructor(private renderer: Renderer2) {
 		// Renderer2 adalah pengganti JQuery dari AngularJS
 		this.renderer.addClass(document.body, "login-page");
-		this.renderer.removeClass(document.body, "sidebar-mini");
-		this.renderer.removeClass(document.body, "layout-fixed");
 		// this.renderer.setAttribute(document.body, "style", "min-height: 464px;");
 	}
 
