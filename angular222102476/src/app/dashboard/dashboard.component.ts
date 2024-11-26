@@ -22,4 +22,7 @@ export class DashboardComponent {
 		this.renderer.addClass(document.body, "sidebar-collapse");
 		this.renderer.addClass(document.body, "sidebar-mini");
 	}
+
+	nim: string = "222102476";
+	nama: string = "Feryandi";
 }
