@@ -74,7 +74,7 @@ export class MahasiswaComponent implements AfterViewInit {
 	postRecord(): void {
 		let alamat = $("#alamat").val();
 		let jenisKelamin = $("#jenis_kelamin").val();
-		let jp = $("#jurusan").val();
+		let jp = $("#jurusan_prodi").val();
 		let nama = $("#nama").val();
 		let nim = $("#nim").val();
 		let statusNikah = $("#status_nikah").val();
