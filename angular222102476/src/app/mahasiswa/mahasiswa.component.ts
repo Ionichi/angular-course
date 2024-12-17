@@ -44,9 +44,9 @@ export class MahasiswaComponent implements AfterViewInit {
 				const jenisKelamin =
 					element.JenisKelamin +
 					(element.JenisKelamin == "Perempuan" || element.JenisKelamin == "perempuan"
-						? ` <i class="fas fa-venus"></i>`
+						? ` <i class="fas fa-venus text-danger"></i>`
 						: element.JenisKelamin != "undefined"
-							? ` <i class="fas fa-mars"></i>`
+							? ` <i class="fas fa-mars text-primary"></i>`
 							: "");
 
 				const row = [
