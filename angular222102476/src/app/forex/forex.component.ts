@@ -17,6 +17,7 @@ declare const $: any;
 })
 export class ForexComponent implements AfterViewInit {
 	private _table1: any;
+	private currenciesName: any;
 
 	constructor(
 		private renderer: Renderer2,
@@ -28,9 +29,10 @@ export class ForexComponent implements AfterViewInit {
 
 	ngAfterViewInit(): void {
 		this._table1 = $("#table1").DataTable({
-			columnDefs: [{ target: 2, className: "text-right" }],
+			columnDefs: [{ targets: 3, className: "text-right" }],
 		});
 
+		this.getCurrenciesName();
 		this.getData();
 	}
 
@@ -41,18 +43,35 @@ export class ForexComponent implements AfterViewInit {
 
 		this.http.get(url).subscribe((data: any) => {
 			const rates = data.rates;
-			console.log(rates);
+			$("#tanggal").html("Data per tanggal " + this.formatDate(new Date(data.timestamp)));
 
 			let index = 1;
 			for (const key in rates) {
+				const name = this.currenciesName[key];
 				const value = key == "IDR" ? rates[key] : rates["IDR"] / rates[key];
 
-				const row = [index++, key, "Rp " + formatCurrency(value, "en-US", "", key)];
+				const row = [index++, key, name, formatCurrency(value, "en-US", "Rp ", key)];
 
 				this._table1.row.add(row);
 			}
 
 			this._table1.draw(false);
+		});
+	}
+
+	formatDate(date: Date) {
+		return [
+			date.getDate().toString().padStart(2, "0"),
+			(date.getMonth() + 1).toString().padStart(2, "0"),
+			date.getFullYear(),
+		].join("-");
+	}
+
+	getCurrenciesName() {
+		const url = "https://openexchangerates.org/api/currencies.json?app_id=ed7da89c86024435b2759feebe9d4ce2";
+
+		this.http.get(url).subscribe((data) => {
+			this.currenciesName = data;
 		});
 	}
 }
