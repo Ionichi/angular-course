@@ -47,7 +47,7 @@ export class ForexComponent implements AfterViewInit {
 			for (const key in rates) {
 				const value = key == "IDR" ? rates[key] : rates["IDR"] / rates[key];
 
-				const row = [index++, key, formatCurrency(value, "en-US", "", key)];
+				const row = [index++, key, "Rp " + formatCurrency(value, "en-US", "", key)];
 
 				this._table1.row.add(row);
 			}
