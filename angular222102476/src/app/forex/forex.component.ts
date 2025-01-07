@@ -43,7 +43,7 @@ export class ForexComponent implements AfterViewInit {
 
 		this.http.get(url).subscribe((data: any) => {
 			const rates = data.rates;
-			$("#tanggal").html("Data per tanggal " + this.formatDate(new Date(data.timestamp)));
+			$("#tanggal").html("Data per tanggal " + this.formatDate(new Date(data.timestamp * 1000)));
 
 			let index = 1;
 			for (const key in rates) {
@@ -60,11 +60,19 @@ export class ForexComponent implements AfterViewInit {
 	}
 
 	formatDate(date: Date) {
-		return [
-			date.getDate().toString().padStart(2, "0"),
-			(date.getMonth() + 1).toString().padStart(2, "0"),
-			date.getFullYear(),
-		].join("-");
+		return (
+			[
+				date.getDate().toString().padStart(2, "0"),
+				(date.getMonth() + 1).toString().padStart(2, "0"),
+				date.getFullYear(),
+			].join("-") +
+			" " +
+			[
+				date.getHours().toString().padStart(2, "0"),
+				date.getMinutes().toString().padStart(2, "0"),
+				date.getSeconds().toString().padStart(2, "0"),
+			].join(":")
+		);
 	}
 
 	getCurrenciesName() {
